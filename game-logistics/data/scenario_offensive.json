@@ -1,0 +1,564 @@
+{
+  "id": "scenario_offensive",
+  "name": "Операция «Молот» — 2-я ОГ",
+  "short_title": "ОП.«МОЛОТ»",
+  "mission_mode": "OFFENSIVE",
+  "frontline_interdiction_mult": 0.55,
+  "map_bounds": {
+    "x": 0.0,
+    "y": 0.0,
+    "width": 2200.0,
+    "height": 1250.0
+  },
+  "duration_hours": 120,
+  "phase2_start_hour": 36,
+  "start_hour": 6,
+  "rng_seed": 404120,
+  "phase1_readiness_target": {
+    "FUEL": 340.0,
+    "AMMO": 460.0
+  },
+  "railhead_interval_hours": 8,
+  "train_lock_hours": 3,
+  "train_slots": 6,
+  "truck_order_cooldown_hours": 16,
+  "default_train_target": "rail_zapadnaya",
+  "default_train_slots": ["FUEL", "FUEL", "AMMO", "AMMO", "PROVISIONS", "PARTS"],
+  "slot_amounts": {
+    "FUEL": 80.0,
+    "AMMO": 95.0,
+    "PROVISIONS": 60.0,
+    "PARTS": 50.0
+  },
+  "recon_interval_hours": 8,
+  "secondary_objectives": [
+    {
+      "id": "fast_capture_100h",
+      "title": "Высокий темп прорыва",
+      "description": "Захватить все 3 целевых узла быстрее чем за 100 часов.",
+      "metric": "VICTORY_UNDER_HOURS",
+      "target_value": 100.0,
+      "bonus_cp": 50
+    },
+    {
+      "id": "min_integrity_40",
+      "title": "Устойчивость боевых порядков",
+      "description": "Не допустить падения целостности любого сектора ниже 40%.",
+      "metric": "MIN_SECTOR_INTEGRITY",
+      "target_value": 40.0,
+      "bonus_cp": 50
+    }
+  ],
+  "convoys": {
+    "cargo_capacity": 30.0,
+    "fuel_tank": 7.0,
+    "fuel_burn_per_km": 0.008,
+    "load_ticks": 2,
+    "initial_fleet": [
+      { "type": "CARGO", "node": "rail_zapadnaya" },
+      { "type": "CARGO", "node": "rail_zapadnaya" },
+      { "type": "CARGO", "node": "rail_zapadnaya" },
+      { "type": "CARGO", "node": "rail_zapadnaya" },
+      { "type": "CARGO", "node": "rail_zapadnaya" },
+      { "type": "CARGO", "node": "rail_zapadnaya" },
+      { "type": "TANKER", "node": "rail_zapadnaya" },
+      { "type": "TANKER", "node": "rail_zapadnaya" },
+      { "type": "TANKER", "node": "rail_zapadnaya" },
+      { "type": "TANKER", "node": "rail_zapadnaya" },
+      { "type": "ENGINEER", "node": "rail_zapadnaya" },
+      { "type": "ENGINEER", "node": "rail_zapadnaya" },
+      { "type": "CARGO", "node": "rail_uzlovaya" },
+      { "type": "TANKER", "node": "rail_uzlovaya" }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "rail_zapadnaya",
+      "name": "Ст. Западная",
+      "type": "RAILHEAD",
+      "x": 140.0,
+      "y": 625.0,
+      "is_vulnerable": false,
+      "loading_slots": 99,
+      "stock": { "FUEL": 400.0, "AMMO": 450.0, "PROVISIONS": 225.0, "PARTS": 175.0 },
+      "capacity": { "FUEL": 3000.0, "AMMO": 3000.0, "PROVISIONS": 2000.0, "PARTS": 2000.0 }
+    },
+    {
+      "id": "rail_uzlovaya",
+      "name": "Ст. Узловая",
+      "type": "RAILHEAD",
+      "x": 510.0,
+      "y": 625.0,
+      "is_vulnerable": true,
+      "loading_slots": 3,
+      "signature": 12.0,
+      "stock": { "FUEL": 100.0, "AMMO": 125.0, "PROVISIONS": 65.0, "PARTS": 50.0 },
+      "capacity": { "FUEL": 400.0, "AMMO": 400.0, "PROVISIONS": 250.0, "PARTS": 250.0 }
+    },
+    {
+      "id": "junc_kamenka",
+      "name": "Мост Каменка",
+      "type": "JUNCTION",
+      "x": 470.0,
+      "y": 330.0,
+      "flank": "NORTH",
+      "is_bridge": true,
+      "repair_cost_parts": 20.0
+    },
+    {
+      "id": "depot_sosnovka",
+      "name": "Склад «Сосновка»",
+      "type": "DEPOT",
+      "x": 760.0,
+      "y": 250.0,
+      "flank": "NORTH",
+      "is_vulnerable": true,
+      "loading_slots": 2,
+      "signature": 8.0,
+      "stock": { "FUEL": 50.0, "AMMO": 58.0, "PROVISIONS": 32.0, "PARTS": 26.0 },
+      "capacity": { "FUEL": 220.0, "AMMO": 220.0, "PROVISIONS": 140.0, "PARTS": 120.0 }
+    },
+    {
+      "id": "junc_olkhovka",
+      "name": "Перевал Ольховка",
+      "type": "JUNCTION",
+      "x": 940.0,
+      "y": 165.0,
+      "flank": "NORTH"
+    },
+    {
+      "id": "junc_berezniki",
+      "name": "Узел Березники",
+      "type": "JUNCTION",
+      "x": 960.0,
+      "y": 470.0,
+      "flank": "NORTH"
+    },
+    {
+      "id": "depot_lipki",
+      "name": "Склад «Липки»",
+      "type": "DEPOT",
+      "x": 1120.0,
+      "y": 330.0,
+      "flank": "NORTH",
+      "is_vulnerable": true,
+      "loading_slots": 2,
+      "signature": 10.0,
+      "stock": { "FUEL": 50.0, "AMMO": 58.0, "PROVISIONS": 32.0, "PARTS": 26.0 },
+      "capacity": { "FUEL": 220.0, "AMMO": 220.0, "PROVISIONS": 140.0, "PARTS": 120.0 }
+    },
+    {
+      "id": "junc_dubki",
+      "name": "Развязка Дубки",
+      "type": "JUNCTION",
+      "x": 1320.0,
+      "y": 215.0,
+      "flank": "NORTH"
+    },
+    {
+      "id": "junc_zarechye",
+      "name": "Мост Заречье",
+      "type": "JUNCTION",
+      "x": 490.0,
+      "y": 910.0,
+      "flank": "SOUTH",
+      "is_bridge": true,
+      "repair_cost_parts": 20.0
+    },
+    {
+      "id": "depot_rudnoye",
+      "name": "Склад «Рудное»",
+      "type": "DEPOT",
+      "x": 760.0,
+      "y": 970.0,
+      "flank": "SOUTH",
+      "is_vulnerable": true,
+      "loading_slots": 2,
+      "signature": 10.0,
+      "stock": { "FUEL": 50.0, "AMMO": 58.0, "PROVISIONS": 32.0, "PARTS": 26.0 },
+      "capacity": { "FUEL": 220.0, "AMMO": 220.0, "PROVISIONS": 140.0, "PARTS": 120.0 }
+    },
+    {
+      "id": "junc_vetluga",
+      "name": "Развязка Ветлуга",
+      "type": "JUNCTION",
+      "x": 935.0,
+      "y": 760.0,
+      "flank": "SOUTH"
+    },
+    {
+      "id": "junc_polevoye",
+      "name": "Узел Полевое",
+      "type": "JUNCTION",
+      "x": 950.0,
+      "y": 1085.0,
+      "flank": "SOUTH"
+    },
+    {
+      "id": "depot_krasny_yar",
+      "name": "Склад «Красный Яр»",
+      "type": "DEPOT",
+      "x": 1130.0,
+      "y": 890.0,
+      "flank": "SOUTH",
+      "is_vulnerable": true,
+      "loading_slots": 2,
+      "signature": 12.0,
+      "stock": { "FUEL": 50.0, "AMMO": 58.0, "PROVISIONS": 32.0, "PARTS": 26.0 },
+      "capacity": { "FUEL": 220.0, "AMMO": 220.0, "PROVISIONS": 140.0, "PARTS": 120.0 }
+    },
+    {
+      "id": "junc_vysokoye",
+      "name": "Развязка Высокое",
+      "type": "JUNCTION",
+      "x": 1325.0,
+      "y": 1015.0,
+      "flank": "SOUTH"
+    },
+    {
+      "id": "arty_north",
+      "name": "1-й АДН (Север)",
+      "type": "ARTILLERY",
+      "x": 1330.0,
+      "y": 445.0,
+      "flank": "NORTH",
+      "stock": { "FUEL": 25.0, "AMMO": 65.0, "PROVISIONS": 20.0, "PARTS": 15.0 },
+      "capacity": { "FUEL": 100.0, "AMMO": 240.0, "PROVISIONS": 60.0, "PARTS": 60.0 }
+    },
+    {
+      "id": "arty_south",
+      "name": "2-й АДН (Юг)",
+      "type": "ARTILLERY",
+      "x": 1330.0,
+      "y": 775.0,
+      "flank": "SOUTH",
+      "stock": { "FUEL": 25.0, "AMMO": 65.0, "PROVISIONS": 20.0, "PARTS": 15.0 },
+      "capacity": { "FUEL": 100.0, "AMMO": 240.0, "PROVISIONS": 60.0, "PARTS": 60.0 }
+    },
+    {
+      "id": "front_n1",
+      "name": "1-й МСБ (Север-1)",
+      "type": "FRONT_SECTOR",
+      "x": 1555.0,
+      "y": 165.0,
+      "flank": "NORTH",
+      "target_objective_id": "obj_north",
+      "stock": { "FUEL": 30.0, "AMMO": 35.0, "PROVISIONS": 25.0, "PARTS": 15.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_n2",
+      "name": "2-й МСБ (Север-2)",
+      "type": "FRONT_SECTOR",
+      "x": 1570.0,
+      "y": 355.0,
+      "flank": "NORTH",
+      "target_objective_id": "obj_north",
+      "stock": { "FUEL": 30.0, "AMMO": 35.0, "PROVISIONS": 25.0, "PARTS": 15.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_n3",
+      "name": "3-й ТБ (Центр-С)",
+      "type": "FRONT_SECTOR",
+      "x": 1555.0,
+      "y": 535.0,
+      "flank": "NORTH",
+      "target_objective_id": "obj_center",
+      "stock": { "FUEL": 30.0, "AMMO": 35.0, "PROVISIONS": 25.0, "PARTS": 15.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_s1",
+      "name": "4-й МСБ (Центр-Ю)",
+      "type": "FRONT_SECTOR",
+      "x": 1555.0,
+      "y": 715.0,
+      "flank": "SOUTH",
+      "target_objective_id": "obj_center",
+      "stock": { "FUEL": 30.0, "AMMO": 35.0, "PROVISIONS": 25.0, "PARTS": 15.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_s2",
+      "name": "5-й ТБ (Юг-1)",
+      "type": "FRONT_SECTOR",
+      "x": 1570.0,
+      "y": 895.0,
+      "flank": "SOUTH",
+      "target_objective_id": "obj_south",
+      "stock": { "FUEL": 30.0, "AMMO": 35.0, "PROVISIONS": 25.0, "PARTS": 15.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_s3",
+      "name": "6-й МСБ (Юг-2)",
+      "type": "FRONT_SECTOR",
+      "x": 1555.0,
+      "y": 1085.0,
+      "flank": "SOUTH",
+      "target_objective_id": "obj_south",
+      "stock": { "FUEL": 30.0, "AMMO": 35.0, "PROVISIONS": 25.0, "PARTS": 15.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "obj_north",
+      "name": "Узел «Клин»",
+      "type": "OBJECTIVE",
+      "x": 1885.0,
+      "y": 255.0,
+      "flank": "NORTH",
+      "owner": "ENEMY",
+      "capture_progress": 0.0,
+      "stock": { "FUEL": 0.0, "AMMO": 0.0, "PROVISIONS": 0.0, "PARTS": 0.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 }
+    },
+    {
+      "id": "obj_center",
+      "name": "Узел «Перекрёсток»",
+      "type": "OBJECTIVE",
+      "x": 1905.0,
+      "y": 625.0,
+      "flank": "CENTER",
+      "owner": "ENEMY",
+      "capture_progress": 0.0,
+      "stock": { "FUEL": 0.0, "AMMO": 0.0, "PROVISIONS": 0.0, "PARTS": 0.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 }
+    },
+    {
+      "id": "obj_south",
+      "name": "Узел «Южный»",
+      "type": "OBJECTIVE",
+      "x": 1885.0,
+      "y": 990.0,
+      "flank": "SOUTH",
+      "owner": "ENEMY",
+      "capture_progress": 0.0,
+      "stock": { "FUEL": 0.0, "AMMO": 0.0, "PROVISIONS": 0.0, "PARTS": 0.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 }
+    }
+  ],
+  "edges": [
+    { "id": "e_zap_kam", "from": "rail_zapadnaya", "to": "junc_kamenka", "road_type": "HIGHWAY", "distance_km": 36.0 },
+    { "id": "e_zap_zar", "from": "rail_zapadnaya", "to": "junc_zarechye", "road_type": "HIGHWAY", "distance_km": 38.0 },
+    { "id": "e_zap_uzl", "from": "rail_zapadnaya", "to": "rail_uzlovaya", "road_type": "SECONDARY", "distance_km": 34.0 },
+
+    { "id": "e_uzl_kam", "from": "rail_uzlovaya", "to": "junc_kamenka", "road_type": "SECONDARY", "distance_km": 28.0 },
+    { "id": "e_uzl_zar", "from": "rail_uzlovaya", "to": "junc_zarechye", "road_type": "HIGHWAY", "distance_km": 28.0 },
+    { "id": "e_uzl_sos", "from": "rail_uzlovaya", "to": "depot_sosnovka", "road_type": "DIRT", "distance_km": 38.0 },
+    { "id": "e_uzl_rud", "from": "rail_uzlovaya", "to": "depot_rudnoye", "road_type": "SECONDARY", "distance_km": 36.0 },
+    { "id": "e_uzl_ber", "from": "rail_uzlovaya", "to": "junc_berezniki", "road_type": "SECONDARY", "distance_km": 42.0 },
+    { "id": "e_uzl_vet", "from": "rail_uzlovaya", "to": "junc_vetluga", "road_type": "HIGHWAY", "distance_km": 40.0 },
+
+    { "id": "e_kam_sos", "from": "junc_kamenka", "to": "depot_sosnovka", "road_type": "SECONDARY", "distance_km": 28.0 },
+    { "id": "e_kam_olh", "from": "junc_kamenka", "to": "junc_olkhovka", "road_type": "DIRT", "distance_km": 44.0 },
+    { "id": "e_sos_olh", "from": "depot_sosnovka", "to": "junc_olkhovka", "road_type": "SECONDARY", "distance_km": 20.0 },
+    { "id": "e_sos_ber", "from": "depot_sosnovka", "to": "junc_berezniki", "road_type": "DIRT", "distance_km": 26.0 },
+    { "id": "e_sos_lip", "from": "depot_sosnovka", "to": "depot_lipki", "road_type": "SECONDARY", "distance_km": 34.0 },
+    { "id": "e_olh_lip", "from": "junc_olkhovka", "to": "depot_lipki", "road_type": "DIRT", "distance_km": 24.0 },
+    { "id": "e_olh_dub", "from": "junc_olkhovka", "to": "junc_dubki", "road_type": "SECONDARY", "distance_km": 35.0 },
+    { "id": "e_olh_fn1", "from": "junc_olkhovka", "to": "front_n1", "road_type": "DIRT", "distance_km": 54.0 },
+    { "id": "e_ber_lip", "from": "junc_berezniki", "to": "depot_lipki", "road_type": "SECONDARY", "distance_km": 21.0 },
+    { "id": "e_ber_arn", "from": "junc_berezniki", "to": "arty_north", "road_type": "DIRT", "distance_km": 34.0 },
+    { "id": "e_lip_dub", "from": "depot_lipki", "to": "junc_dubki", "road_type": "SECONDARY", "distance_km": 22.0 },
+    { "id": "e_lip_arn", "from": "depot_lipki", "to": "arty_north", "road_type": "SECONDARY", "distance_km": 23.0 },
+    { "id": "e_lip_fn2", "from": "depot_lipki", "to": "front_n2", "road_type": "DIRT", "distance_km": 42.0 },
+    { "id": "e_dub_fn1", "from": "junc_dubki", "to": "front_n1", "road_type": "SECONDARY", "distance_km": 23.0 },
+    { "id": "e_dub_fn2", "from": "junc_dubki", "to": "front_n2", "road_type": "DIRT", "distance_km": 26.0 },
+    { "id": "e_arn_fn2", "from": "arty_north", "to": "front_n2", "road_type": "SECONDARY", "distance_km": 24.0 },
+    { "id": "e_arn_fn3", "from": "arty_north", "to": "front_n3", "road_type": "SECONDARY", "distance_km": 23.0 },
+
+    { "id": "e_zar_rud", "from": "junc_zarechye", "to": "depot_rudnoye", "road_type": "HIGHWAY", "distance_km": 26.0 },
+    { "id": "e_zar_pol", "from": "junc_zarechye", "to": "junc_polevoye", "road_type": "SECONDARY", "distance_km": 44.0 },
+    { "id": "e_rud_vet", "from": "depot_rudnoye", "to": "junc_vetluga", "road_type": "HIGHWAY", "distance_km": 25.0 },
+    { "id": "e_rud_pol", "from": "depot_rudnoye", "to": "junc_polevoye", "road_type": "SECONDARY", "distance_km": 21.0 },
+    { "id": "e_rud_kyr", "from": "depot_rudnoye", "to": "depot_krasny_yar", "road_type": "HIGHWAY", "distance_km": 35.0 },
+    { "id": "e_vet_kyr", "from": "junc_vetluga", "to": "depot_krasny_yar", "road_type": "HIGHWAY", "distance_km": 22.0 },
+    { "id": "e_vet_ars", "from": "junc_vetluga", "to": "arty_south", "road_type": "SECONDARY", "distance_km": 36.0 },
+    { "id": "e_pol_kyr", "from": "junc_polevoye", "to": "depot_krasny_yar", "road_type": "SECONDARY", "distance_km": 25.0 },
+    { "id": "e_pol_vys", "from": "junc_polevoye", "to": "junc_vysokoye", "road_type": "HIGHWAY", "distance_km": 35.0 },
+    { "id": "e_pol_fs3", "from": "junc_polevoye", "to": "front_s3", "road_type": "DIRT", "distance_km": 54.0 },
+    { "id": "e_kyr_ars", "from": "depot_krasny_yar", "to": "arty_south", "road_type": "HIGHWAY", "distance_km": 22.0 },
+    { "id": "e_kyr_vys", "from": "depot_krasny_yar", "to": "junc_vysokoye", "road_type": "HIGHWAY", "distance_km": 22.0 },
+    { "id": "e_ars_fs1", "from": "arty_south", "to": "front_s1", "road_type": "HIGHWAY", "distance_km": 22.0 },
+    { "id": "e_ars_fs2", "from": "arty_south", "to": "front_s2", "road_type": "HIGHWAY", "distance_km": 25.0 },
+    { "id": "e_vys_fs2", "from": "junc_vysokoye", "to": "front_s2", "road_type": "HIGHWAY", "distance_km": 25.0 },
+    { "id": "e_vys_fs3", "from": "junc_vysokoye", "to": "front_s3", "road_type": "SECONDARY", "distance_km": 23.0 },
+
+    { "id": "e_ber_vet", "from": "junc_berezniki", "to": "junc_vetluga", "road_type": "SECONDARY", "distance_km": 28.0 },
+    { "id": "e_lip_kyr", "from": "depot_lipki", "to": "depot_krasny_yar", "road_type": "DIRT", "distance_km": 50.0 },
+    { "id": "e_arn_ars", "from": "arty_north", "to": "arty_south", "road_type": "HIGHWAY", "distance_km": 30.0 },
+    { "id": "e_fn3_fs1", "from": "front_n3", "to": "front_s1", "road_type": "SECONDARY", "distance_km": 17.0 },
+
+    { "id": "e_fn1_objn", "from": "front_n1", "to": "obj_north", "road_type": "SECONDARY", "distance_km": 32.0, "mined": true },
+    { "id": "e_fn2_objn", "from": "front_n2", "to": "obj_north", "road_type": "DIRT", "distance_km": 31.0, "mined": true },
+    { "id": "e_fn3_objc", "from": "front_n3", "to": "obj_center", "road_type": "HIGHWAY", "distance_km": 34.0, "mined": true },
+    { "id": "e_fs1_objc", "from": "front_s1", "to": "obj_center", "road_type": "HIGHWAY", "distance_km": 34.0, "mined": true },
+    { "id": "e_fs2_objs", "from": "front_s2", "to": "obj_south", "road_type": "HIGHWAY", "distance_km": 31.0, "mined": true },
+    { "id": "e_fs3_objs", "from": "front_s3", "to": "obj_south", "road_type": "SECONDARY", "distance_km": 32.0, "mined": true }
+  ],
+  "waves": [
+    {
+      "start_hour": 0,
+      "end_hour": 16,
+      "sectors": { "front_n1": "LOW", "front_n2": "LOW", "front_n3": "LOW", "front_s1": "LOW", "front_s2": "LOW", "front_s3": "LOW" }
+    },
+    {
+      "start_hour": 16,
+      "end_hour": 28,
+      "sectors": { "front_n1": "LOW", "front_n2": "MEDIUM", "front_n3": "LOW", "front_s1": "MEDIUM", "front_s2": "LOW", "front_s3": "LOW" }
+    },
+    {
+      "start_hour": 28,
+      "end_hour": 36,
+      "sectors": { "front_n1": "LOW", "front_n2": "LOW", "front_n3": "MEDIUM", "front_s1": "LOW", "front_s2": "MEDIUM", "front_s3": "LOW" }
+    },
+    {
+      "start_hour": 36,
+      "end_hour": 64,
+      "sectors": { "front_n1": "HIGH", "front_n2": "HIGH", "front_n3": "MEDIUM", "front_s1": "MEDIUM", "front_s2": "HIGH", "front_s3": "MEDIUM" }
+    },
+    {
+      "start_hour": 64,
+      "end_hour": 92,
+      "sectors": { "front_n1": "MEDIUM", "front_n2": "HIGH", "front_n3": "HIGH", "front_s1": "HIGH", "front_s2": "MEDIUM", "front_s3": "HIGH" }
+    },
+    {
+      "start_hour": 92,
+      "end_hour": 120,
+      "sectors": { "front_n1": "HIGH", "front_n2": "MEDIUM", "front_n3": "HIGH", "front_s1": "HIGH", "front_s2": "HIGH", "front_s3": "MEDIUM" }
+    }
+  ],
+  "weather_schedule": [
+    { "start_hour": 0, "end_hour": 18, "weather": "CLEAR" },
+    { "start_hour": 18, "end_hour": 34, "weather": "RAIN" },
+    { "start_hour": 34, "end_hour": 48, "weather": "MUD" },
+    { "start_hour": 48, "end_hour": 74, "weather": "CLEAR" },
+    { "start_hour": 74, "end_hour": 92, "weather": "RAIN" },
+    { "start_hour": 92, "end_hour": 106, "weather": "MUD" },
+    { "start_hour": 106, "end_hour": 120, "weather": "CLEAR" }
+  ],
+  "bridge_strikes": [
+    { "hour": 24, "node_id": "junc_kamenka" }
+  ],
+  "radiograms": [
+    {
+      "id": "rad_00_plan",
+      "hour": 0,
+      "sender": "Штаб 2-й ОГ",
+      "node_id": "rail_zapadnaya",
+      "severity": "INFO",
+      "text": "Фаза 1 (0–36 ч): скрытно накопите резервы на передовой и в артдивизионах. Вы можете направлять эшелоны на тыловую Ст. Западная или на прифронтовую Ст. Узловая."
+    },
+    {
+      "id": "rad_14_uzlovaya",
+      "hour": 14,
+      "sender": "Начальник ВОСО",
+      "node_id": "rail_uzlovaya",
+      "severity": "INFO",
+      "text": "Ст. Узловая ускоряет подвоз к обоим флангам, но её разгрузка демаскирует станцию. Чередуйте станции и берегите склады!"
+    },
+    {
+      "id": "rad_24_kamenka",
+      "hour": 24,
+      "sender": "Комендант Северного фланга",
+      "node_id": "junc_kamenka",
+      "severity": "CRITICAL",
+      "text": "Ракетным ударом повреждён Мост Каменка! Направьте туда инженерную колонну с запчастями (20 т) для восстановления переправы."
+    },
+    {
+      "id": "rad_36_offensive",
+      "hour": 36,
+      "sender": "Командующий 2-й ОГ",
+      "node_id": "arty_north",
+      "severity": "WARNING",
+      "text": "НАЧАЛАСЬ ФАЗА 2: НАСТУПЛЕНИЕ! Все 6 батальонов перешли в атаку на узлы «Клин», «Перекрёсток» и «Южный». Поддержите темп БК и топливом!"
+    },
+    {
+      "id": "rad_58_demine",
+      "hour": 58,
+      "sender": "Начальник инженерной службы",
+      "node_id": "obj_center",
+      "severity": "INFO",
+      "text": "Подходы к узлам противника заминированы. После прорыва первыми направляйте туда инженерные колонны для разминирования трасс!"
+    },
+    {
+      "id": "rad_88_push",
+      "hour": 88,
+      "sender": "Штаб 2-й ОГ",
+      "node_id": "obj_south",
+      "severity": "WARNING",
+      "text": "Противник контратакует. Следите за очередями на складах, вывозите раненых и перебрасывайте порожние колонны ближе к прорыву!"
+    }
+  ],
+  "visual": {
+    "front_units": {
+      "front_n1": { "code": "1 МСБ", "symbol": "INFANTRY" },
+      "front_n2": { "code": "2 МСБ", "symbol": "INFANTRY" },
+      "front_n3": { "code": "3 ТБ", "symbol": "ARMOR" },
+      "front_s1": { "code": "4 МСБ", "symbol": "INFANTRY" },
+      "front_s2": { "code": "5 ТБ", "symbol": "ARMOR" },
+      "front_s3": { "code": "6 МСБ", "symbol": "INFANTRY" }
+    },
+    "bridge_nodes": ["junc_kamenka", "junc_zarechye"],
+    "rail_line": [
+      [-350.0, 625.0],
+      [140.0, 625.0],
+      [325.0, 610.0],
+      [510.0, 625.0]
+    ],
+    "rivers": [
+      {
+        "name": "р. Ветлуга",
+        "width": 15.0,
+        "points": [
+          [415.0, -320.0],
+          [440.0, -40.0],
+          [460.0, 210.0],
+          [470.0, 330.0],
+          [445.0, 520.0],
+          [432.0, 660.0],
+          [490.0, 910.0],
+          [520.0, 1260.0],
+          [550.0, 1580.0]
+        ]
+      },
+      {
+        "name": "р. Каменка",
+        "width": 8.0,
+        "points": [
+          [1180.0, -320.0],
+          [980.0, -20.0],
+          [720.0, 95.0],
+          [560.0, 155.0],
+          [460.0, 210.0]
+        ]
+      }
+    ],
+    "front_bands": [
+      { "y": -320.0, "base_x": 1685.0, "captured_x": 1685.0, "obj_id": "" },
+      { "y": 40.0, "base_x": 1675.0, "captured_x": 1990.0, "obj_id": "obj_north" },
+      { "y": 255.0, "base_x": 1705.0, "captured_x": 2035.0, "obj_id": "obj_north" },
+      { "y": 445.0, "base_x": 1675.0, "captured_x": 2005.0, "obj_id": "obj_center" },
+      { "y": 625.0, "base_x": 1705.0, "captured_x": 2055.0, "obj_id": "obj_center" },
+      { "y": 805.0, "base_x": 1680.0, "captured_x": 2010.0, "obj_id": "obj_south" },
+      { "y": 990.0, "base_x": 1705.0, "captured_x": 2035.0, "obj_id": "obj_south" },
+      { "y": 1220.0, "base_x": 1685.0, "captured_x": 1985.0, "obj_id": "obj_south" },
+      { "y": 1580.0, "base_x": 1695.0, "captured_x": 1695.0, "obj_id": "" }
+    ],
+    "enemy_units": [
+      { "code": "11 мсп", "sector_id": "front_n1", "obj_id": "obj_north", "symbol": "INFANTRY", "echelon": "III", "x": 1775.0, "y": 165.0 },
+      { "code": "14 мсп", "sector_id": "front_n2", "obj_id": "obj_north", "symbol": "INFANTRY", "echelon": "III", "x": 1785.0, "y": 355.0 },
+      { "code": "23 тб", "sector_id": "front_n3", "obj_id": "obj_center", "symbol": "ARMOR", "echelon": "II", "x": 1780.0, "y": 535.0 },
+      { "code": "18 мсп", "sector_id": "front_s1", "obj_id": "obj_center", "symbol": "INFANTRY", "echelon": "III", "x": 1780.0, "y": 715.0 },
+      { "code": "27 тб", "sector_id": "front_s2", "obj_id": "obj_south", "symbol": "ARMOR", "echelon": "II", "x": 1785.0, "y": 895.0 },
+      { "code": "31 мсп", "sector_id": "front_s3", "obj_id": "obj_south", "symbol": "INFANTRY", "echelon": "III", "x": 1775.0, "y": 1085.0 }
+    ]
+  }
+}

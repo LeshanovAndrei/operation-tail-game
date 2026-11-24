@@ -1,0 +1,74 @@
+{
+  "upgrades": [
+    {
+      "id": "extra_cargo",
+      "name": "Дополнительная бортовая колонна",
+      "description": "+1 бортовая колонна (30т) в постоянный состав автопарка на старте всех операций.",
+      "cost_cp": 80,
+      "icon": "flatbed-covered",
+      "effects": {
+        "bonus_cargo_convoys": 1
+      }
+    },
+    {
+      "id": "extra_tanker",
+      "name": "Дополнительная колонна АТЗ",
+      "description": "+1 топливозаправщик АТЗ (40т) в постоянный состав автопарка на старте всех операций.",
+      "cost_cp": 80,
+      "icon": "gas-pump",
+      "effects": {
+        "bonus_tanker_convoys": 1
+      }
+    },
+    {
+      "id": "extra_engineer",
+      "name": "Дополнительная инженерная рота",
+      "description": "+1 инженерная колонна (24т) для ускоренного ремонта мостов, трасс и разминирования.",
+      "cost_cp": 90,
+      "icon": "bulldozer",
+      "effects": {
+        "bonus_engineer_convoys": 1
+      }
+    },
+    {
+      "id": "extended_train",
+      "name": "Удлинённый ж/д состав",
+      "description": "+1 дополнительный вагон в каждом эшелоне снабжения (7 слотов вместо 6).",
+      "cost_cp": 110,
+      "icon": "steam-locomotive",
+      "effects": {
+        "bonus_train_slots": 1
+      }
+    },
+    {
+      "id": "camo_nets",
+      "name": "Улучшенные маскировочные сети",
+      "description": "-20% к скорости накопления сигнатуры на всех складах и прифронтовых станциях.",
+      "cost_cp": 95,
+      "icon": "radar-sweep",
+      "effects": {
+        "depot_signature_growth_mult": 0.80
+      }
+    },
+    {
+      "id": "heavy_suspension",
+      "name": "Усиленные рессоры и резина",
+      "description": "+15% к скорости движения колонн по грунтовым дорогам и в распутицу.",
+      "cost_cp": 85,
+      "icon": "wrench",
+      "effects": {
+        "dirt_mud_speed_mult": 1.15
+      }
+    },
+    {
+      "id": "extra_armored",
+      "name": "Дополнительная бронегруппа подвоза",
+      "description": "+1 бронированная колонна подвоза (БТР, 12т) на старте всех операций с защитой 90% от обстрела.",
+      "cost_cp": 100,
+      "icon": "apc",
+      "effects": {
+        "bonus_armored_convoys": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "id": "scenario_01",
+  "name": "Операция «Тыл»: 72 часа",
+  "duration_hours": 72,
+  "start_hour": 6,
+  "rng_seed": 42072,
+  "railhead_interval_hours": 6,
+  "railhead_delivery": {
+    "FUEL": 95.0,
+    "AMMO": 110.0
+  },
+  "recon_interval_hours": 8,
+  "victory_target_front_stock": {
+    "FUEL": 60.0,
+    "AMMO": 80.0
+  },
+  "convoys": {
+    "count": 8,
+    "spawn_node": "railhead_west",
+    "cargo_capacity": 25.0,
+    "fuel_tank": 6.0,
+    "fuel_burn_per_km": 0.008,
+    "load_ticks": 2
+  },
+  "nodes": [
+    {
+      "id": "railhead_west",
+      "name": "Станция Западная",
+      "type": "RAILHEAD",
+      "x": 115.0,
+      "y": 405.0,
+      "stock": { "FUEL": 220.0, "AMMO": 260.0 },
+      "capacity": { "FUEL": 2000.0, "AMMO": 2000.0 }
+    },
+    {
+      "id": "junc_bridge_w",
+      "name": "Мост Западный",
+      "type": "JUNCTION",
+      "x": 260.0,
+      "y": 405.0
+    },
+    {
+      "id": "junc_cross_n",
+      "name": "Развязка Север",
+      "type": "JUNCTION",
+      "x": 320.0,
+      "y": 195.0
+    },
+    {
+      "id": "junc_ford_s",
+      "name": "Брод Южный",
+      "type": "JUNCTION",
+      "x": 305.0,
+      "y": 595.0
+    },
+    {
+      "id": "depot_north",
+      "name": "Склад «Север»",
+      "type": "DEPOT",
+      "x": 455.0,
+      "y": 245.0,
+      "stock": { "FUEL": 35.0, "AMMO": 45.0 },
+      "capacity": { "FUEL": 160.0, "AMMO": 160.0 },
+      "signature": 10.0
+    },
+    {
+      "id": "depot_south",
+      "name": "Склад «Юг»",
+      "type": "DEPOT",
+      "x": 455.0,
+      "y": 540.0,
+      "stock": { "FUEL": 35.0, "AMMO": 45.0 },
+      "capacity": { "FUEL": 160.0, "AMMO": 160.0 },
+      "signature": 10.0
+    },
+    {
+      "id": "junc_cross_c",
+      "name": "Узел Центр",
+      "type": "JUNCTION",
+      "x": 605.0,
+      "y": 405.0
+    },
+    {
+      "id": "junc_ridge_e",
+      "name": "Перевал Восточный",
+      "type": "JUNCTION",
+      "x": 655.0,
+      "y": 195.0
+    },
+    {
+      "id": "front_north",
+      "name": "Сектор Север",
+      "type": "FRONT_SECTOR",
+      "x": 810.0,
+      "y": 185.0,
+      "stock": { "FUEL": 30.0, "AMMO": 40.0 },
+      "capacity": { "FUEL": 120.0, "AMMO": 120.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_center",
+      "name": "Сектор Центр",
+      "type": "FRONT_SECTOR",
+      "x": 810.0,
+      "y": 405.0,
+      "stock": { "FUEL": 30.0, "AMMO": 40.0 },
+      "capacity": { "FUEL": 120.0, "AMMO": 120.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_south",
+      "name": "Сектор Юг",
+      "type": "FRONT_SECTOR",
+      "x": 810.0,
+      "y": 610.0,
+      "stock": { "FUEL": 30.0, "AMMO": 40.0 },
+      "capacity": { "FUEL": 120.0, "AMMO": 120.0 },
+      "integrity": 100.0
+    }
+  ],
+  "edges": [
+    { "id": "e_rw_bw", "from": "railhead_west", "to": "junc_bridge_w", "road_type": "HIGHWAY", "distance_km": 22.0 },
+    { "id": "e_rw_cn", "from": "railhead_west", "to": "junc_cross_n", "road_type": "SECONDARY", "distance_km": 30.0 },
+    { "id": "e_rw_fs", "from": "railhead_west", "to": "junc_ford_s", "road_type": "DIRT", "distance_km": 28.0 },
+    { "id": "e_bw_dn", "from": "junc_bridge_w", "to": "depot_north", "road_type": "HIGHWAY", "distance_km": 24.0 },
+    { "id": "e_bw_ds", "from": "junc_bridge_w", "to": "depot_south", "road_type": "HIGHWAY", "distance_km": 24.0 },
+    { "id": "e_cn_dn", "from": "junc_cross_n", "to": "depot_north", "road_type": "SECONDARY", "distance_km": 18.0 },
+    { "id": "e_fs_ds", "from": "junc_ford_s", "to": "depot_south", "road_type": "DIRT", "distance_km": 18.0 },
+    { "id": "e_dn_ds", "from": "depot_north", "to": "depot_south", "road_type": "SECONDARY", "distance_km": 28.0 },
+    { "id": "e_dn_re", "from": "depot_north", "to": "junc_ridge_e", "road_type": "HIGHWAY", "distance_km": 22.0 },
+    { "id": "e_dn_cc", "from": "depot_north", "to": "junc_cross_c", "road_type": "SECONDARY", "distance_km": 22.0 },
+    { "id": "e_ds_cc", "from": "depot_south", "to": "junc_cross_c", "road_type": "HIGHWAY", "distance_km": 22.0 },
+    { "id": "e_ds_fs", "from": "depot_south", "to": "front_south", "road_type": "DIRT", "distance_km": 36.0 },
+    { "id": "e_re_fn", "from": "junc_ridge_e", "to": "front_north", "road_type": "SECONDARY", "distance_km": 20.0 },
+    { "id": "e_cc_fn", "from": "junc_cross_c", "to": "front_north", "road_type": "DIRT", "distance_km": 28.0 },
+    { "id": "e_cc_fc", "from": "junc_cross_c", "to": "front_center", "road_type": "HIGHWAY", "distance_km": 22.0 },
+    { "id": "e_cc_fs", "from": "junc_cross_c", "to": "front_south", "road_type": "SECONDARY", "distance_km": 26.0 }
+  ],
+  "waves": [
+    {
+      "start_hour": 0,
+      "end_hour": 6,
+      "sectors": { "front_north": "LOW", "front_center": "LOW", "front_south": "LOW" }
+    },
+    {
+      "start_hour": 6,
+      "end_hour": 18,
+      "sectors": { "front_north": "HIGH", "front_center": "MEDIUM", "front_south": "LOW" }
+    },
+    {
+      "start_hour": 18,
+      "end_hour": 30,
+      "sectors": { "front_north": "LOW", "front_center": "HIGH", "front_south": "MEDIUM" }
+    },
+    {
+      "start_hour": 30,
+      "end_hour": 42,
+      "sectors": { "front_north": "MEDIUM", "front_center": "LOW", "front_south": "HIGH" }
+    },
+    {
+      "start_hour": 42,
+      "end_hour": 54,
+      "sectors": { "front_north": "HIGH", "front_center": "MEDIUM", "front_south": "LOW" }
+    },
+    {
+      "start_hour": 54,
+      "end_hour": 66,
+      "sectors": { "front_north": "MEDIUM", "front_center": "HIGH", "front_south": "HIGH" }
+    },
+    {
+      "start_hour": 66,
+      "end_hour": 72,
+      "sectors": { "front_north": "HIGH", "front_center": "HIGH", "front_south": "MEDIUM" }
+    }
+  ],
+  "visual": {
+    "front_units": {
+      "front_north": { "code": "1 МСБ", "symbol": "INFANTRY" },
+      "front_center": { "code": "2 ТБ", "symbol": "ARMOR" },
+      "front_south": { "code": "3 МСБ", "symbol": "INFANTRY" }
+    },
+    "bridge_nodes": ["junc_bridge_w"],
+    "ford_nodes": ["junc_ford_s"],
+    "rivers": [
+      {
+        "name": "р. Западная",
+        "width": 13.0,
+        "points": [
+          [225.0, -220.0],
+          [240.0, 20.0],
+          [220.0, 185.0],
+          [242.0, 315.0],
+          [260.0, 405.0],
+          [285.0, 505.0],
+          [305.0, 595.0],
+          [285.0, 730.0],
+          [320.0, 1020.0]
+        ]
+      },
+      {
+        "name": "р. Тихая",
+        "width": 7.0,
+        "points": [
+          [630.0, -180.0],
+          [545.0, 70.0],
+          [455.0, 130.0],
+          [350.0, 140.0],
+          [278.0, 225.0],
+          [242.0, 315.0]
+        ]
+      }
+    ],
+    "front_line": [
+      [885.0, -180.0],
+      [875.0, 40.0],
+      [895.0, 175.0],
+      [872.0, 295.0],
+      [892.0, 410.0],
+      [870.0, 520.0],
+      [895.0, 630.0],
+      [878.0, 770.0],
+      [900.0, 1020.0]
+    ],
+    "enemy_units": [
+      { "code": "11 мсд", "sector_id": "front_north", "symbol": "INFANTRY", "echelon": "XX", "x": 942.0, "y": 185.0 },
+      { "code": "23 тбр", "sector_id": "front_center", "symbol": "ARMOR", "echelon": "X", "x": 946.0, "y": 405.0 },
+      { "code": "18 мсд", "sector_id": "front_south", "symbol": "INFANTRY", "echelon": "XX", "x": 942.0, "y": 605.0 }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/ui/camera_controller.gd" id="2_cam"]
+[ext_resource type="Script" path="res://scripts/ui/topo_backdrop.gd" id="3_topo"]
+[ext_resource type="Script" path="res://scripts/ui/map_view.gd" id="4_map"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="5_hud"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 400)
+script = ExtResource("2_cam")
+
+[node name="TopoBackdrop" type="ColorRect" parent="."]
+script = ExtResource("3_topo")
+
+[node name="MapView" type="Node2D" parent="."]
+script = ExtResource("4_map")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("5_hud")

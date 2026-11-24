@@ -1,0 +1,32 @@
+# Godot 4+ cache and generated files
+.godot/
+.mono/
+data_*/
+mono_crash.*.json
+export_presets.cfg
+*.translation
+game-logistics/android/
+builds/
+export/
+*.pck
+*.x86_64
+*.exe
+
+# Note: Keep *.import and *.uid files tracked in Git so asset import settings
+# (icons, fonts, shaders) and Godot 4.7 script UIDs persist across Linux and Windows.
+
+# Temporary, log, backup, and OS/editor junk
+*.tmp
+*.log
+*.bak
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/*.log
+
+# Heavy raw archives (extracted SVG assets are tracked under game-logistics/assets/)
+resources/*.zip
+resources/*.7z
+resources/*.tar.gz
+resources/*.rar

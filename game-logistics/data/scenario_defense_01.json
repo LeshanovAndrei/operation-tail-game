@@ -1,0 +1,357 @@
+{
+  "id": "scenario_defense_01",
+  "name": "Операция «Заслон» — Пограничный рубеж",
+  "short_title": "ОП.«ЗАСЛОН»",
+  "mission_mode": "DEFENSE",
+  "frontline_interdiction_mult": 0.45,
+  "map_bounds": {
+    "x": 0.0,
+    "y": 0.0,
+    "width": 1600.0,
+    "height": 960.0
+  },
+  "duration_hours": 48,
+  "phase2_start_hour": 0,
+  "start_hour": 6,
+  "rng_seed": 202601,
+  "railhead_interval_hours": 8,
+  "train_lock_hours": 3,
+  "train_slots": 6,
+  "truck_order_cooldown_hours": 16,
+  "default_train_target": "rail_stancia",
+  "default_train_slots": ["FUEL", "AMMO", "AMMO", "PROVISIONS", "PARTS", "FUEL"],
+  "slot_amounts": {
+    "FUEL": 80.0,
+    "AMMO": 95.0,
+    "PROVISIONS": 60.0,
+    "PARTS": 50.0
+  },
+  "recon_interval_hours": 8,
+  "convoys": {
+    "cargo_capacity": 30.0,
+    "fuel_tank": 7.0,
+    "fuel_burn_per_km": 0.008,
+    "load_ticks": 2,
+    "initial_fleet": [
+      { "type": "CARGO", "node": "rail_stancia" },
+      { "type": "CARGO", "node": "rail_stancia" },
+      { "type": "CARGO", "node": "rail_stancia" },
+      { "type": "CARGO", "node": "rail_stancia" },
+      { "type": "CARGO", "node": "rail_stancia" },
+      { "type": "TANKER", "node": "rail_stancia" },
+      { "type": "TANKER", "node": "rail_stancia" },
+      { "type": "TANKER", "node": "rail_stancia" },
+      { "type": "ENGINEER", "node": "rail_stancia" }
+    ]
+  },
+  "secondary_objectives": [
+    {
+      "id": "no_depot_strikes",
+      "title": "Скрытность тыла",
+      "description": "Не потерять ни одного склада (0 ударов по тыловым узлам).",
+      "metric": "NO_DEPOT_STRIKES",
+      "target_value": 0.0,
+      "bonus_cp": 40
+    },
+    {
+      "id": "evac_80_wounded",
+      "title": "Спасение личного состава",
+      "description": "Вывезти не менее 80% всех раненых с передовой.",
+      "metric": "WOUNDED_EVAC_RATIO",
+      "target_value": 0.80,
+      "bonus_cp": 40
+    }
+  ],
+  "nodes": [
+    {
+      "id": "rail_stancia",
+      "name": "Ст. Пограничная",
+      "type": "RAILHEAD",
+      "x": 140.0,
+      "y": 480.0,
+      "is_vulnerable": false,
+      "loading_slots": 99,
+      "stock": { "FUEL": 340.0, "AMMO": 380.0, "PROVISIONS": 210.0, "PARTS": 160.0 },
+      "capacity": { "FUEL": 2400.0, "AMMO": 2400.0, "PROVISIONS": 1600.0, "PARTS": 1600.0 }
+    },
+    {
+      "id": "junc_most_sever",
+      "name": "Мост Сосновый",
+      "type": "JUNCTION",
+      "x": 430.0,
+      "y": 270.0,
+      "flank": "ALL",
+      "is_bridge": true,
+      "repair_cost_parts": 20.0
+    },
+    {
+      "id": "junc_most_yug",
+      "name": "Мост Речной",
+      "type": "JUNCTION",
+      "x": 440.0,
+      "y": 690.0,
+      "flank": "ALL",
+      "is_bridge": true,
+      "repair_cost_parts": 20.0
+    },
+    {
+      "id": "junc_pereval",
+      "name": "Узел Лужки",
+      "type": "JUNCTION",
+      "x": 640.0,
+      "y": 480.0,
+      "flank": "ALL"
+    },
+    {
+      "id": "depot_bor",
+      "name": "Склад «Бор»",
+      "type": "DEPOT",
+      "x": 700.0,
+      "y": 240.0,
+      "flank": "ALL",
+      "is_vulnerable": true,
+      "loading_slots": 2,
+      "signature": 8.0,
+      "stock": { "FUEL": 60.0, "AMMO": 70.0, "PROVISIONS": 40.0, "PARTS": 35.0 },
+      "capacity": { "FUEL": 220.0, "AMMO": 220.0, "PROVISIONS": 140.0, "PARTS": 120.0 }
+    },
+    {
+      "id": "depot_step",
+      "name": "Склад «Степной»",
+      "type": "DEPOT",
+      "x": 710.0,
+      "y": 720.0,
+      "flank": "ALL",
+      "is_vulnerable": true,
+      "loading_slots": 2,
+      "signature": 8.0,
+      "stock": { "FUEL": 60.0, "AMMO": 70.0, "PROVISIONS": 40.0, "PARTS": 35.0 },
+      "capacity": { "FUEL": 220.0, "AMMO": 220.0, "PROVISIONS": 140.0, "PARTS": 120.0 }
+    },
+    {
+      "id": "junc_dubrava",
+      "name": "Развязка Дубрава",
+      "type": "JUNCTION",
+      "x": 960.0,
+      "y": 170.0,
+      "flank": "ALL"
+    },
+    {
+      "id": "junc_kolos",
+      "name": "Развязка Колос",
+      "type": "JUNCTION",
+      "x": 960.0,
+      "y": 395.0,
+      "flank": "ALL"
+    },
+    {
+      "id": "junc_dolina",
+      "name": "Развязка Долина",
+      "type": "JUNCTION",
+      "x": 960.0,
+      "y": 600.0,
+      "flank": "ALL"
+    },
+    {
+      "id": "junc_ozero",
+      "name": "Развязка Озёрная",
+      "type": "JUNCTION",
+      "x": 960.0,
+      "y": 795.0,
+      "flank": "ALL"
+    },
+    {
+      "id": "arty_div1",
+      "name": "1-й АДН (поддержка)",
+      "type": "ARTILLERY",
+      "x": 1040.0,
+      "y": 495.0,
+      "flank": "ALL",
+      "stock": { "FUEL": 35.0, "AMMO": 95.0, "PROVISIONS": 25.0, "PARTS": 20.0 },
+      "capacity": { "FUEL": 110.0, "AMMO": 240.0, "PROVISIONS": 70.0, "PARTS": 60.0 }
+    },
+    {
+      "id": "front_d1",
+      "name": "1-й МСБ (Север)",
+      "type": "FRONT_SECTOR",
+      "x": 1280.0,
+      "y": 175.0,
+      "flank": "ALL",
+      "stock": { "FUEL": 38.0, "AMMO": 48.0, "PROVISIONS": 28.0, "PARTS": 18.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_d2",
+      "name": "2-й МСБ (Центр-С)",
+      "type": "FRONT_SECTOR",
+      "x": 1295.0,
+      "y": 385.0,
+      "flank": "ALL",
+      "stock": { "FUEL": 38.0, "AMMO": 48.0, "PROVISIONS": 28.0, "PARTS": 18.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_d3",
+      "name": "3-й ТБ (Центр-Ю)",
+      "type": "FRONT_SECTOR",
+      "x": 1295.0,
+      "y": 595.0,
+      "flank": "ALL",
+      "stock": { "FUEL": 38.0, "AMMO": 48.0, "PROVISIONS": 28.0, "PARTS": 18.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    },
+    {
+      "id": "front_d4",
+      "name": "4-й МСБ (Юг)",
+      "type": "FRONT_SECTOR",
+      "x": 1280.0,
+      "y": 795.0,
+      "flank": "ALL",
+      "stock": { "FUEL": 38.0, "AMMO": 48.0, "PROVISIONS": 28.0, "PARTS": 18.0 },
+      "capacity": { "FUEL": 140.0, "AMMO": 160.0, "PROVISIONS": 90.0, "PARTS": 80.0 },
+      "integrity": 100.0
+    }
+  ],
+  "edges": [
+    { "id": "ed_st_ms", "from": "rail_stancia", "to": "junc_most_sever", "road_type": "HIGHWAY", "distance_km": 32.0 },
+    { "id": "ed_st_my", "from": "rail_stancia", "to": "junc_most_yug", "road_type": "HIGHWAY", "distance_km": 33.0 },
+    { "id": "ed_ms_lu", "from": "junc_most_sever", "to": "junc_pereval", "road_type": "SECONDARY", "distance_km": 26.0 },
+    { "id": "ed_my_lu", "from": "junc_most_yug", "to": "junc_pereval", "road_type": "SECONDARY", "distance_km": 26.0 },
+    { "id": "ed_ms_bor", "from": "junc_most_sever", "to": "depot_bor", "road_type": "HIGHWAY", "distance_km": 25.0 },
+    { "id": "ed_my_step", "from": "junc_most_yug", "to": "depot_step", "road_type": "HIGHWAY", "distance_km": 25.0 },
+    { "id": "ed_lu_bor", "from": "junc_pereval", "to": "depot_bor", "road_type": "SECONDARY", "distance_km": 24.0 },
+    { "id": "ed_lu_step", "from": "junc_pereval", "to": "depot_step", "road_type": "SECONDARY", "distance_km": 24.0 },
+    { "id": "ed_lu_art", "from": "junc_pereval", "to": "arty_div1", "road_type": "HIGHWAY", "distance_km": 36.0 },
+    { "id": "ed_bor_dub", "from": "depot_bor", "to": "junc_dubrava", "road_type": "SECONDARY", "distance_km": 25.0 },
+    { "id": "ed_bor_kol", "from": "depot_bor", "to": "junc_kolos", "road_type": "HIGHWAY", "distance_km": 28.0 },
+    { "id": "ed_step_dol", "from": "depot_step", "to": "junc_dolina", "road_type": "HIGHWAY", "distance_km": 26.0 },
+    { "id": "ed_step_oze", "from": "depot_step", "to": "junc_ozero", "road_type": "SECONDARY", "distance_km": 25.0 },
+    { "id": "ed_dub_kol", "from": "junc_dubrava", "to": "junc_kolos", "road_type": "SECONDARY", "distance_km": 21.0 },
+    { "id": "ed_kol_art", "from": "junc_kolos", "to": "arty_div1", "road_type": "SECONDARY", "distance_km": 14.0 },
+    { "id": "ed_dol_art", "from": "junc_dolina", "to": "arty_div1", "road_type": "SECONDARY", "distance_km": 14.0 },
+    { "id": "ed_dol_oze", "from": "junc_dolina", "to": "junc_ozero", "road_type": "SECONDARY", "distance_km": 19.0 },
+    { "id": "ed_dub_fd1", "from": "junc_dubrava", "to": "front_d1", "road_type": "SECONDARY", "distance_km": 29.0 },
+    { "id": "ed_kol_fd1", "from": "junc_kolos", "to": "front_d1", "road_type": "DIRT", "distance_km": 36.0 },
+    { "id": "ed_kol_fd2", "from": "junc_kolos", "to": "front_d2", "road_type": "HIGHWAY", "distance_km": 31.0 },
+    { "id": "ed_art_fd2", "from": "arty_div1", "to": "front_d2", "road_type": "SECONDARY", "distance_km": 26.0 },
+    { "id": "ed_art_fd3", "from": "arty_div1", "to": "front_d3", "road_type": "SECONDARY", "distance_km": 26.0 },
+    { "id": "ed_dol_fd3", "from": "junc_dolina", "to": "front_d3", "road_type": "HIGHWAY", "distance_km": 31.0 },
+    { "id": "ed_oze_fd3", "from": "junc_ozero", "to": "front_d3", "road_type": "DIRT", "distance_km": 36.0 },
+    { "id": "ed_oze_fd4", "from": "junc_ozero", "to": "front_d4", "road_type": "SECONDARY", "distance_km": 29.0 }
+  ],
+  "waves": [
+    {
+      "start_hour": 0,
+      "end_hour": 8,
+      "sectors": { "front_d1": "LOW", "front_d2": "LOW", "front_d3": "LOW", "front_d4": "LOW" }
+    },
+    {
+      "start_hour": 8,
+      "end_hour": 18,
+      "sectors": { "front_d1": "MEDIUM", "front_d2": "LOW", "front_d3": "MEDIUM", "front_d4": "LOW" }
+    },
+    {
+      "start_hour": 18,
+      "end_hour": 30,
+      "sectors": { "front_d1": "HIGH", "front_d2": "HIGH", "front_d3": "MEDIUM", "front_d4": "MEDIUM" }
+    },
+    {
+      "start_hour": 30,
+      "end_hour": 40,
+      "sectors": { "front_d1": "MEDIUM", "front_d2": "HIGH", "front_d3": "HIGH", "front_d4": "HIGH" }
+    },
+    {
+      "start_hour": 40,
+      "end_hour": 48,
+      "sectors": { "front_d1": "LOW", "front_d2": "LOW", "front_d3": "LOW", "front_d4": "LOW" }
+    }
+  ],
+  "weather_schedule": [
+    { "start_hour": 0, "end_hour": 14, "weather": "CLEAR" },
+    { "start_hour": 14, "end_hour": 26, "weather": "RAIN" },
+    { "start_hour": 26, "end_hour": 36, "weather": "MUD" },
+    { "start_hour": 36, "end_hour": 48, "weather": "CLEAR" }
+  ],
+  "bridge_strikes": [
+    { "hour": 18, "node_id": "junc_most_sever" }
+  ],
+  "radiograms": [
+    {
+      "id": "def_rad_00",
+      "hour": 0,
+      "sender": "Штаб сектора",
+      "node_id": "rail_stancia",
+      "severity": "INFO",
+      "text": "Вводная операция «Заслон» (48 ч): наладьте подвоз от Ст. Пограничная к четырём батальонам и 1-му АДН. Берегите склады от разведки и вывозите раненых!"
+    },
+    {
+      "id": "def_rad_14",
+      "hour": 14,
+      "sender": "Метеослужба",
+      "node_id": "depot_bor",
+      "severity": "WARNING",
+      "text": "Над сектором сгущаются дожди, ожидается ухудшение состояния грунтовок. Основной трафик ведите по шоссе."
+    },
+    {
+      "id": "def_rad_18",
+      "hour": 18,
+      "sender": "Комендант переправы",
+      "node_id": "junc_most_sever",
+      "severity": "CRITICAL",
+      "text": "Удар противника по Мосту Сосновый! Северные батальоны перешли в тяжёлый бой. Направьте инженерную колонну (20т ЗП) на переправу!"
+    },
+    {
+      "id": "def_rad_40",
+      "hour": 40,
+      "sender": "Штаб сектора",
+      "node_id": "front_d3",
+      "severity": "INFO",
+      "text": "Натиск противника выдыхается. Используйте затишье до 48-го часа для эвакуации всех оставшихся раненых в тыл!"
+    }
+  ],
+  "visual": {
+    "front_units": {
+      "front_d1": { "code": "1 МСБ", "symbol": "INFANTRY" },
+      "front_d2": { "code": "2 МСБ", "symbol": "INFANTRY" },
+      "front_d3": { "code": "3 ТБ", "symbol": "ARMOR" },
+      "front_d4": { "code": "4 МСБ", "symbol": "INFANTRY" }
+    },
+    "bridge_nodes": ["junc_most_sever", "junc_most_yug"],
+    "rail_line": [
+      [-320.0, 480.0],
+      [140.0, 480.0]
+    ],
+    "rivers": [
+      {
+        "name": "р. Студёная",
+        "width": 14.0,
+        "points": [
+          [385.0, -280.0],
+          [405.0, 40.0],
+          [430.0, 270.0],
+          [405.0, 480.0],
+          [440.0, 690.0],
+          [475.0, 960.0],
+          [505.0, 1260.0]
+        ]
+      }
+    ],
+    "front_bands": [
+      { "y": -280.0, "base_x": 1405.0, "captured_x": 1405.0, "obj_id": "" },
+      { "y": 175.0, "base_x": 1415.0, "captured_x": 1415.0, "obj_id": "" },
+      { "y": 385.0, "base_x": 1430.0, "captured_x": 1430.0, "obj_id": "" },
+      { "y": 595.0, "base_x": 1430.0, "captured_x": 1430.0, "obj_id": "" },
+      { "y": 795.0, "base_x": 1415.0, "captured_x": 1415.0, "obj_id": "" },
+      { "y": 1220.0, "base_x": 1410.0, "captured_x": 1410.0, "obj_id": "" }
+    ],
+    "enemy_units": [
+      { "code": "7 мсп", "sector_id": "front_d1", "obj_id": "", "symbol": "INFANTRY", "echelon": "III", "x": 1495.0, "y": 175.0 },
+      { "code": "9 мсп", "sector_id": "front_d2", "obj_id": "", "symbol": "INFANTRY", "echelon": "III", "x": 1505.0, "y": 385.0 },
+      { "code": "12 тб", "sector_id": "front_d3", "obj_id": "", "symbol": "ARMOR", "echelon": "II", "x": 1505.0, "y": 595.0 },
+      { "code": "15 мсп", "sector_id": "front_d4", "obj_id": "", "symbol": "INFANTRY", "echelon": "III", "x": 1495.0, "y": 795.0 }
+    ]
+  }
+}
